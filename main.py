@@ -163,6 +163,54 @@ def jogar():
         tela.blit(pauseMsg, (15, 45))
 
         
+def start():
+    pygame.mixer.music.play(-1)
+
+    larguraButtonStart = 200
+    alturaButtonStart = 50
+    larguraButtonQuit = 200
+    alturaButtonQuit = 50
+
+    while True:
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+            elif evento.type == pygame.MOUSEBUTTONDOWN:
+                if startButton.collidepoint(evento.pos):
+                    larguraButtonStart = 180
+                    alturaButtonStart = 45
+                if quitButton.collidepoint(evento.pos):
+                    larguraButtonQuit = 180
+                    alturaButtonQuit = 45
+
+            elif evento.type == pygame.MOUSEBUTTONUP:
+                if startButton.collidepoint(evento.pos):
+                    larguraButtonStart = 200
+                    alturaButtonStart = 50
+                    jogar()
+                if quitButton.collidepoint(evento.pos):
+                    larguraButtonQuit = 200
+                    alturaButtonQuit = 50
+                    pygame.quit()
+                    quit()
+
+        tela.blit(fundoStart, (0, 0))
+
+        startButton = pygame.draw.rect(tela, branco, (50, 50, larguraButtonStart, alturaButtonStart), border_radius=15)
+        startTexto = fonteMenu.render("Iniciar Game", True, preto)
+        tela.blit(startTexto, (70, 60))
+
+        quitButton = pygame.draw.rect(tela, branco, (50, 120, larguraButtonQuit, alturaButtonQuit), border_radius=15)
+        quitTexto = fonteMenu.render("Sair do Game", True, preto)
+        tela.blit(quitTexto, (70, 130))
+
+        pygame.display.update()
+        relogio.tick(60)
+
+
+        
 def dead():
     pygame.mixer.music.stop()
     pygame.mixer.Sound.play(explosaoSound)
