@@ -162,6 +162,25 @@ def jogar():
         pauseMsg = fonteMenu.render("Press Space to Pause Game", True, branco)
         tela.blit(pauseMsg, (15, 45))
 
+        jogador_rect = pygame.Rect(
+            posicaoXNeymar + 30, posicaoYNeymar + 30,
+            larguraNeymar - 60, alturaNeymar - 60
+        )
+        zagueiro_rect = pygame.Rect(
+            posicaoXZagueiro + 20, posicaoYZagueiro + 20,
+            larguraZagueiro - 40, alturaZagueiro - 40
+        )
+
+        if jogador_rect.colliderect(zagueiro_rect) and not pausado:
+            escreverDados(nome, pontos)
+            dead()
+
+        if pausado:
+            pause_text = fonteMorte.render("PAUSE", True, amarelo)
+            tela.blit(pause_text, (350, 250))
+
+        pygame.display.update()
+        relogio.tick(60)
         
 def start():
     pygame.mixer.music.play(-1)
