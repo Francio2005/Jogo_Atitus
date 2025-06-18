@@ -48,11 +48,11 @@ fundoStart = pygame.transform.scale(fundoStart, tamanho)
 fundoJogo = pygame.transform.scale(fundoJogo, tamanho)
 fundoDead = pygame.transform.scale(fundoDead, tamanho)
 
-# Sons
+
 explosaoSound = pygame.mixer.Sound("assets/Gta 5 Tela de Morte.wav")
 pygame.mixer.music.load("assets/Batucada Futbolera de Boca.mp3")
 
-# Fontes
+
 fonteMenu = pygame.font.SysFont("comicsans", 24)
 fonteTexto = pygame.font.SysFont("arial", 24)
 fonteMorte = pygame.font.SysFont("arial", 100)
@@ -94,7 +94,7 @@ def jogar():
 
     global nome
 
-    # Obter nome do jogador
+    
     root = tk.Tk()
     root.withdraw()
 
