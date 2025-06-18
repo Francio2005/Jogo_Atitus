@@ -163,3 +163,32 @@ def jogar():
         tela.blit(pauseMsg, (15, 45))
 
         
+def dead():
+    pygame.mixer.music.stop()
+    pygame.mixer.Sound.play(explosaoSound)
+
+    tela.blit(fundoDead, (0, 0))
+
+    with open("base.atitus", "r") as f:
+        log_partidas = json.load(f)
+
+    texto_morte = fonteMorte.render("GAME OVER", True, vermelho)
+    tela.blit(texto_morte, (200, 100))
+
+    logs = list(log_partidas.items())[-5:]
+
+    y_offset = 300
+    for jogador, dados in logs:
+        texto = fonteTexto.render(f"{jogador}: {dados[0]} pontos em {dados[1]}", True, preto)
+        tela.blit(texto, (100, y_offset))
+        y_offset += 40
+
+    pygame.display.update()
+    pygame.time.delay(5000)
+    start()
+
+
+start()
+
+
+        
