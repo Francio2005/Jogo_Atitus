@@ -34,7 +34,7 @@ fundoStart = pygame.image.load("assets/FotoSoccer.jpg")
 fundoJogo = pygame.image.load("assets/FotoSoccer.jpg")
 fundoDead = pygame.image.load("assets/fundoDead.png")
 
-# Tamanho dos bonecos
+
 larguraNeymar = int(tamanho[0] * 0.25)
 alturaNeymar = int(tamanho[1] * 0.30)
 
@@ -57,6 +57,34 @@ fonteMenu = pygame.font.SysFont("comicsans", 24)
 fonteTexto = pygame.font.SysFont("arial", 24)
 fonteMorte = pygame.font.SysFont("arial", 100)
 fonteBoasVindas = pygame.font.SysFont("arial", 32)
+
+
+def tela_boas_vindas():
+    while True:
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            elif evento.type == pygame.MOUSEBUTTONUP:
+                if startButton.collidepoint(evento.pos):
+                    return
+
+        tela.blit(fundoStart, (0, 0))
+
+        titulo = fonteBoasVindas.render(f"Bem-vindo {nome}!", True, branco)
+        tela.blit(titulo, (300, 100))
+
+        explicacao = fonteTexto.render("Fuja do zagueiro e sobreviva o máximo que puder!", True, branco)
+        tela.blit(explicacao, (200, 200))
+        explicacao2 = fonteTexto.render("Use as setas para se mover. Só pode se mover em um eixo por vez.", True, branco)
+        tela.blit(explicacao2, (100, 240))
+
+        startButton = pygame.draw.rect(tela, branco, (400, 500, 200, 50), border_radius=15)
+        startTexto = fonteMenu.render("Iniciar Jogo", True, preto)
+        tela.blit(startTexto, (440, 515))
+
+        pygame.display.update()
+        relogio.tick(60)
 
 
 
