@@ -5,6 +5,9 @@
 - **Nome Completo** [Gabriel Pedro Francio]
 - **RA** [1137759]
 
+-**Nome Testador** [Kael Fuchs Zatti]
+-**RA** [1137819]
+
 
 ---
 
